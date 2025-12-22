@@ -1,7 +1,7 @@
 import { GoogleUserProvider, GoogleUserProfile, GoogleDetailedUserProfile, GoogleTokenInfo, GoogleApiError } from "@/types";
 
 class User implements GoogleUserProvider {
-    private readonly BASIC_PROFILE_URL = "https://www.googleapis.com/oauth2/v2/me";
+    private readonly BASIC_PROFILE_URL = "https://www.googleapis.com/oauth2/v2/userinfo";
     private readonly DETAILED_PROFILE_URL = "https://people.googleapis.com/v1/people/me";
     private readonly TOKEN_INFO_URL = "https://oauth2.googleapis.com/tokeninfo";
 
