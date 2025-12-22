@@ -3,7 +3,8 @@
 [![npm version](https://badge.fury.io/js/google-oauth-lib.svg)](https://badge.fury.io/js/google-oauth-lib)
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 
-Node.js向けのGoogle OAuth 2.0認証ライブラリ。TypeScriptで書かれ、完全な型定義を提供します。
+Node.js向けのGoogle OAuth
+2.0認証ライブラリ。TypeScriptで書かれ、完全な型定義を提供します。
 
 ## 特徴
 
@@ -16,35 +17,46 @@ Node.js向けのGoogle OAuth 2.0認証ライブラリ。TypeScriptで書かれ�
 ## インストール
 
 ```bash
-npm install google_oauth_provider
+npm install google-oauth-lib
 ```
 
 ## クイックスタート
 
 ```typescript
-import { Google, OAuth2, User } from 'google_oauth_provider';
+import { Google } from "google-oauth-lib";
 
 // 設定
 const config = {
-  clientId: 'your-client-id',
-  clientSecret: 'your-client-secret',
-  redirectUri: 'http://localhost:3000/callback'
+    clientId: "your-client-id",
+    clientSecret: "your-client-secret",
+    redirectUri: "http://localhost:3000/callback",
 };
 
-// OAuthインスタンス作成
-const oauth = new OAuth2(config);
+// Googleクライアント作成
+const google = Google.OAuth(const GoogleClient = Google.OAuth({
+    clientId:     process.env.GOOGLE_CLIENT_ID     || "",
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
+    authorization: {
+        params: {
+            scope: [
+                "openid",
+                "email",
+                "profile"
+            ]
+        }
+    }
+}););
 
 // 認証URL生成
-const authUrl = oauth.getAuthorizationUrl({
-  scope: ['https://www.googleapis.com/auth/userinfo.profile']
+const authUrl = google.oauth.url({
+    redirect_uri: "http://localhost:3000"
 });
 
 // トークン取得（コールバック後）
-const tokens = await oauth.exchangeCodeForTokens(code);
+const tokens = await google.oauth.token(code);
 
 // ユーザー情報取得
-const userProvider = new User();
-const profile = await userProvider.profile(tokens.access_token);
+const profile = await google.user.profile();
 ```
 
 ## API リファレンス
@@ -53,17 +65,17 @@ const profile = await userProvider.profile(tokens.access_token);
 
 Google OAuth 2.0認証を扱うクラス。
 
-- `getAuthorizationUrl(options)`: 認証URLを生成
-- `exchangeCodeForTokens(code)`: 認可コードをトークンと交換
-- `refreshAccessToken(refreshToken)`: アクセストークンをリフレッシュ
+- `url(options)`: 認証URLを生成
+- `token(code)`: 認可コードをトークンと交換
+- `refresh(refreshToken)`: アクセストークンをリフレッシュ
 
 ### User
 
 Googleユーザー情報を取得するクラス。
 
-- `profile(accessToken)`: 基本ユーザー情報を取得
-- `detailedProfile(accessToken)`: People APIで詳細情報を取得
-- `verifyToken(accessToken)`: トークンの有効性を検証
+- `profile()`: 基本ユーザー情報を取得
+- `detailedProfile()`: People APIで詳細情報を取得
+- `verifyToken()`: トークンの有効性を検証
 
 ### Google (メインクラス)
 
@@ -77,9 +89,9 @@ const google = Google.OAuth(config);
 
 ```typescript
 interface GoogleProviderConfig {
-  clientId: string;
-  clientSecret: string;
-  redirectUri: string;
+    clientId: string;
+    clientSecret: string;
+    redirectUri: string;
 }
 ```
 
