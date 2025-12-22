@@ -46,11 +46,7 @@ export interface GoogleOAuthTokenErrorResponse {
 /**
  * Google OAuth トークンレスポンス（完全版 Union）
  */
-export type GoogleOAuthTokenResponseWithRefresh =
-  | GoogleOAuthTokenAuthorizationCodeResponse
-  | GoogleOAuthTokenRefreshResponse
-  | GoogleOAuthTokenErrorResponse;
-
 export type GoogleOAuthTokenResponse =
   | GoogleOAuthTokenAuthorizationCodeResponse
+  | GoogleOAuthTokenRefreshResponse
   | GoogleOAuthTokenErrorResponse;
