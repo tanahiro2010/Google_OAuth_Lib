@@ -1,4 +1,4 @@
-# GoogleOAuthLib
+# google-oauth-lib
 
 [![npm version](https://badge.fury.io/js/google-oauth-lib.svg)](https://badge.fury.io/js/google-oauth-lib)
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
