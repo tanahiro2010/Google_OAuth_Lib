@@ -1,6 +1,6 @@
 {
   "name": "google-oauth-lib",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Google OAuth Provider for Node.js",
   "keywords": [
     "tanahiro2010",
@@ -19,9 +19,11 @@
   ],
   "scripts": {
     "build": "tsc",
+    "docs": "typedoc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+    "typedoc": "^0.28.15",
     "typescript": "^5.9.3"
   },
   "repository": {
