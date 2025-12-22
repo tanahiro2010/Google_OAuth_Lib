@@ -1,6 +1,6 @@
 import { GoogleProviderConfig } from "@/types";
-import OAuth2 from "./oauth";
-import User from "./user";
+import OAuth2 from "./lib/oauth";
+import User from "./lib/user";
 
 class Google {
     readonly oauth: OAuth2;
