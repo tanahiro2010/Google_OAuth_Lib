@@ -1,6 +1,6 @@
 {
   "name": "google-oauth-lib",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Google OAuth Provider for Node.js",
   "keywords": [
     "tanahiro2010",
