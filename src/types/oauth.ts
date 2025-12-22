@@ -36,6 +36,11 @@ export type GoogleOAuthProvider = {
      * リフレッシュトークンで新しいアクセストークンを取得
      */
     refresh(refresh_token: string): Promise<GoogleOAuthTokenRefreshResponse>;
+
+    /**
+     * アクセストークンを取り消し
+     */
+    revoke(token: string): Promise<boolean>;
 };
 
 /**

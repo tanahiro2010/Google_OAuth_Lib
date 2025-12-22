@@ -3,7 +3,6 @@ import { GoogleOAuthProvider, GoogleProviderConfig, Authorization } from "@/type
 class OAuth2 implements GoogleOAuthProvider {
     readonly AUTH_BASE_URL  = "https://accounts.google.com/o/oauth2/v2/auth";
     readonly TOKEN_URL      = "https://oauth2.googleapis.com/token";
-    readonly PROFILE_URL    = "https://www.googleapis.com/oauth2/v3/userinfo";
     readonly REVOCATION_URL = "https://oauth2.googleapis.com/revoke";
 
     readonly clientId: Readonly<string>;
@@ -81,6 +80,19 @@ class OAuth2 implements GoogleOAuthProvider {
             body:    params.toString()
         });
         return await response.json();
+    }
+
+    async revoke(token: string) {
+        const params = new URLSearchParams();
+        params.append("token", token);
+        const response = await fetch(this.REVOCATION_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: params.toString()
+        });
+        return response.ok;
     }
 }
 
