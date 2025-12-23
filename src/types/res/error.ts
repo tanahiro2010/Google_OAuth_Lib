@@ -12,7 +12,14 @@ export type GoogleApiError = {
 /**
  * Google OAuth エラーレスポンス
  */
-export type GoogleOAuthError = {
-    error: string;
-    error_description: string;
+export interface GoogleOAuthTokenError {
+  error:
+  | "invalid_request"
+  | "invalid_client"
+  | "invalid_grant"
+  | "unauthorized_client"
+  | "unsupported_grant_type"
+  | string;
+  error_description?: string;
+  error_uri?: string;
 }

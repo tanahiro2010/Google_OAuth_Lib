@@ -1,7 +1,6 @@
 import type {
     GoogleOAuthTokenResponse,
-    GoogleOAuthTokenRefreshResponse,
-    GoogleOAuthTokenErrorResponse
+    GoogleOAuthTokenRefreshResponse
 } from "./res/token";
 
 /**
@@ -42,10 +41,3 @@ export type GoogleOAuthProvider = {
      */
     revoke(token: string): Promise<boolean>;
 };
-
-/**
- * OAuthレスポンスがエラーかどうかを判定
- */
-export function isOAuthError(response: GoogleOAuthTokenResponse): response is GoogleOAuthTokenErrorResponse {
-    return 'error' in response;
-}

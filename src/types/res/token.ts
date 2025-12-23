@@ -29,24 +29,8 @@ export interface GoogleOAuthTokenRefreshResponse
 }
 
 /**
- * Google OAuth エラーレスポンス
- */
-export interface GoogleOAuthTokenErrorResponse {
-  error:
-  | "invalid_request"
-  | "invalid_client"
-  | "invalid_grant"
-  | "unauthorized_client"
-  | "unsupported_grant_type"
-  | string;
-  error_description?: string;
-  error_uri?: string;
-}
-
-/**
  * Google OAuth トークンレスポンス（完全版 Union）
  */
 export type GoogleOAuthTokenResponse =
   | GoogleOAuthTokenAuthorizationCodeResponse
   | GoogleOAuthTokenRefreshResponse
-  | GoogleOAuthTokenErrorResponse;

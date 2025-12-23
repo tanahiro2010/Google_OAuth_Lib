@@ -1,5 +1,5 @@
 import { GoogleOAuthProvider, GoogleProviderConfig, Authorization } from "@/types";
-import { GoogleOAuthError } from "@/types/res/error";
+import { GoogleOAuthTokenError } from "@/types/res/error";
 
 class OAuth2 implements GoogleOAuthProvider {
     readonly AUTH_BASE_URL  = "https://accounts.google.com/o/oauth2/v2/auth";
@@ -62,7 +62,7 @@ class OAuth2 implements GoogleOAuthProvider {
         const data = await response.json();
 
         if (!response.ok) {
-            throw data as GoogleOAuthError;
+            throw data as GoogleOAuthTokenError;
         }
         if (!("access_token" in data)) {
             throw new Error("No access_token in token response");
@@ -88,7 +88,7 @@ class OAuth2 implements GoogleOAuthProvider {
 
         const data = await response.json();
         if (!response.ok) {
-            throw data as GoogleOAuthError;
+            throw data as GoogleOAuthTokenError;
         }
 
         return data;
