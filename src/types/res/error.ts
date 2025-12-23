@@ -8,3 +8,11 @@ export type GoogleApiError = {
         status: string;
     };
 };
+
+/**
+ * Google OAuth エラーレスポンス
+ */
+export type GoogleOAuthError = {
+    error: string;
+    error_description: string;
+}
