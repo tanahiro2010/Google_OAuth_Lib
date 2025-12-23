@@ -27,13 +27,6 @@ import { Google } from "google-oauth-lib";
 
 // 設定
 const config = {
-    clientId: "your-client-id",
-    clientSecret: "your-client-secret",
-    redirectUri: "http://localhost:3000/callback",
-};
-
-// Googleクライアント作成
-const google = Google.OAuth(const GoogleClient = Google.OAuth({
     clientId:     process.env.GOOGLE_CLIENT_ID     || "",
     clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
     authorization: {
@@ -45,7 +38,10 @@ const google = Google.OAuth(const GoogleClient = Google.OAuth({
             ]
         }
     }
-}););
+};
+
+// Googleクライアント作成
+const google = Google.OAuth(config);
 
 // 認証URL生成
 const authUrl = google.oauth.url({
