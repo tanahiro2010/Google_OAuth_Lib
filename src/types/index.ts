@@ -24,8 +24,8 @@ export type { GoogleUserProvider, GoogleUserProfile, GoogleDetailedUserProfile, 
 // スコープ関連
 export type { GoogleScope } from "./scopes";
 
-// 
-export type { GoogleApiError } from "./res/error";
+// エラー関連
+export type { GoogleApiError, GoogleOAuthError } from "./res/error";
 
 // ユーティリティ関数
 export { isOAuthError } from "./oauth";
