@@ -14,8 +14,7 @@ export type {
 export type {
     GoogleOAuthTokenResponse,
     GoogleOAuthTokenAuthorizationCodeResponse,
-    GoogleOAuthTokenRefreshResponse,
-    GoogleOAuthTokenErrorResponse
+    GoogleOAuthTokenRefreshResponse
 } from "./res/token";
 
 // ユーザー関連
@@ -25,8 +24,7 @@ export type { GoogleUserProvider, GoogleUserProfile, GoogleDetailedUserProfile, 
 export type { GoogleScope } from "./scopes";
 
 // エラー関連
-export type { GoogleApiError, GoogleOAuthError } from "./res/error";
+export type { GoogleApiError, GoogleOAuthTokenError } from "./res/error";
 
 // ユーティリティ関数
-export { isOAuthError } from "./oauth";
 export { isUserApiError } from "./user";
