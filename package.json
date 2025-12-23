@@ -1,6 +1,6 @@
 {
   "name": "google-oauth-lib",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "Google OAuth Provider for Node.js",
   "keywords": [
     "tanahiro2010",
@@ -19,6 +19,7 @@
   ],
   "scripts": {
     "build": "tsc",
+    "deploy": "npm run build && npm publish",
     "docs": "typedoc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -27,6 +28,6 @@
     "typescript": "^5.9.3"
   },
   "repository": {
-    "url": "https://github.com/tanahiro2010/Google_OAuth_Lib"
+    "url": "git+https://github.com/tanahiro2010/Google_OAuth_Lib.git"
   }
 }
