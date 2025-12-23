@@ -10,7 +10,7 @@ class User implements GoogleUserProvider {
         this.accessToken = accessToken;
     }
 
-    async profile(): Promise<GoogleUserProfile | GoogleApiError> {
+    async profile(): Promise<GoogleUserProfile> {
         const response = await fetch(this.BASIC_PROFILE_URL, {
             method:  "GET",
             headers: {
@@ -21,13 +21,13 @@ class User implements GoogleUserProvider {
         const data = await response.json();
 
         if (!response.ok) {
-            return data as GoogleApiError;
+            throw data as GoogleApiError;
         }
 
         return data as GoogleUserProfile;
     }
 
-    async detailedProfile(): Promise<GoogleDetailedUserProfile | GoogleApiError> {
+    async detailedProfile(): Promise<GoogleDetailedUserProfile> {
         const url = new URL(this.DETAILED_PROFILE_URL);
         url.searchParams.set("personFields", "names,photos,emailAddresses,birthdays");
 
@@ -41,13 +41,13 @@ class User implements GoogleUserProvider {
         const data = await response.json();
 
         if (!response.ok) {
-            return data as GoogleApiError;
+            throw data as GoogleApiError;
         }
 
         return data as GoogleDetailedUserProfile;
     }
 
-    async verifyToken(): Promise<GoogleTokenInfo | GoogleApiError> {
+    async verifyToken(): Promise<GoogleTokenInfo> {
         const url = new URL(this.TOKEN_INFO_URL);
         url.searchParams.set("access_token", this.accessToken);
 
@@ -55,7 +55,7 @@ class User implements GoogleUserProvider {
         const data = await response.json();
 
         if (!response.ok) {
-            return data as GoogleApiError;
+            throw data as GoogleApiError;
         }
 
         return data as GoogleTokenInfo;
